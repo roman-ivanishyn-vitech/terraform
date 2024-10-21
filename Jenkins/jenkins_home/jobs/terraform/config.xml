@@ -1,0 +1,76 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@1436.vfa_244484591f">
+  <actions>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@2.2214.vb_b_34b_2ea_9b_83"/>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction plugin="pipeline-model-definition@2.2214.vb_b_34b_2ea_9b_83">
+      <jobProperties/>
+      <triggers/>
+      <parameters/>
+      <options/>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction>
+  </actions>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.40.0">
+      <projectUrl>https://github.com/roman-ivanishyn-vitech/mentorship/</projectUrl>
+      <displayName></displayName>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@3969.vdc9d3a_efcc6a_">
+    <script>pipeline {
+    agent any
+    environment {
+        TERRAFORM_DIR = &apos;terraform/backend&apos;
+        TERRAFORM_VERSION = &apos;1.9.8&apos;
+        INSTALL_DIR = &quot;${WORKSPACE}/terraform&quot; // Set installation directory
+        PATH = &quot;${INSTALL_DIR}:${env.PATH}&quot; // Add install dir to PATH
+    }
+
+    stages {
+        stage(&apos;Terraform Init&apos;) {
+            steps {
+            // Initialize Terraform
+                sh &apos;cd ./jenkins&apos;
+                sh &apos;ls -la&apos;
+            }
+        }
+        // stage(&apos;Install Terraform&apos;) {
+        //     steps {
+        //         sh &quot;&quot;&quot;
+        //         mkdir -p ${INSTALL_DIR}
+        //         if ! terraform -version | grep -q ${TERRAFORM_VERSION}; then
+        //             curl -o terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+        //             unzip terraform.zip -d ${INSTALL_DIR} 
+        //             mv ${INSTALL_DIR}/terraform ${INSTALL_DIR}/terraform_installed
+        //         fi
+        //         &quot;&quot;&quot;
+        //     }
+        // }
+        // stage(&apos;Terraform Init&apos;) {
+        //     steps {
+        //         // Initialize Terraform
+        //         sh &apos;${INSTALL_DIR}/terraform_installed init&apos;
+        //     }
+        // }
+        // stage(&apos;Terraform Plan&apos;) {
+        //     steps {
+        //         // Plan Terraform changes
+        //         sh &apos;${INSTALL_DIR}/terraform_installed plan -var-file=terraform/vars/sandbox.tfvars&apos;
+        //     }
+        // }
+    }
+
+    post {
+        always {
+            // Clean up workspace
+            cleanWs()
+        }
+    }
+}
+</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

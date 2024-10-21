@@ -1,0 +1,104 @@
+/* Background */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: url('https://example.com/aws-terraform-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Container for form and message */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+/* Mentorship banner */
+.mentorship-banner {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.mentorship-banner h1 {
+  font-size: 36px;
+  margin: 0;
+}
+
+.mentorship-banner p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* Mentorship form */
+.mentorship-form {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.mentorship-form h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #00d1b2;
+}
+
+.mentorship-form input,
+.mentorship-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #00d1b2; /* Add border color here */
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a background for better contrast */
+  color: #333;
+  font-size: 16px;
+}
+
+.mentorship-form input:focus,
+.mentorship-form textarea:focus {
+  outline: none;
+  border-color: #00a98f; /* Change border color when focused */
+  box-shadow: 0 0 5px rgba(0, 169, 143, 0.5); /* Optional: Add a glowing effect on focus */
+}
+
+.mentorship-form input::placeholder,
+.mentorship-form textarea::placeholder {
+  color: #999;
+}
+
+.mentorship-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #00d1b2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.mentorship-form button:hover {
+  background-color: #00a98f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mentorship-banner h1 {
+    font-size: 28px;
+  }
+  .mentorship-banner p {
+    font-size: 16px;
+  }
+  .mentorship-form h2 {
+    font-size: 20px;
+  }
+}

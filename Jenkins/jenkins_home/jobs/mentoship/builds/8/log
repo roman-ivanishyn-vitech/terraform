@@ -1,0 +1,45 @@
+Started by user [8mha:////4DfkloKUdoyV7bs0PAPeRR9aOgFcWWcGhcs8grzpItiLAAAAnB+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz+EgYB/dLi1CL9osyyxLzM4ozKPACMKN3xxQAAAA==[0mRoman Ivanishyn
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/mentoship
+The recommended git tool is: NONE
+using credential af246f53-f6d2-45bb-a446-9126e75f30c1
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/mentoship/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/roman-ivanishyn-vitech/mentorship # timeout=10
+Fetching upstream changes from https://github.com/roman-ivanishyn-vitech/mentorship
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5'
+using GIT_ASKPASS to set credentials mentorship
+ > git fetch --tags --force --progress -- https://github.com/roman-ivanishyn-vitech/mentorship +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 3ef22653525c37315c5d98cd6709b9e3f26071c7 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 3ef22653525c37315c5d98cd6709b9e3f26071c7 # timeout=10
+Commit message: "create domain name and set to the certificate."
+ > git rev-list --no-walk 3ef22653525c37315c5d98cd6709b9e3f26071c7 # timeout=10
+[mentoship] $ cmd /c call /tmp/jenkins1037504649268903248.bat
+FATAL: command execution failed
+java.io.IOException: error=2, No such file or directory
+	at java.base/java.lang.ProcessImpl.forkAndExec(Native Method)
+	at java.base/java.lang.ProcessImpl.<init>(Unknown Source)
+	at java.base/java.lang.ProcessImpl.start(Unknown Source)
+Caused: java.io.IOException: Cannot run program "cmd" (in directory "/var/jenkins_home/workspace/mentoship"): error=2, No such file or directory
+	at java.base/java.lang.ProcessBuilder.start(Unknown Source)
+	at java.base/java.lang.ProcessBuilder.start(Unknown Source)
+	at hudson.Proc$LocalProc.<init>(Proc.java:252)
+	at hudson.Proc$LocalProc.<init>(Proc.java:221)
+	at hudson.Launcher$LocalLauncher.launch(Launcher.java:994)
+	at hudson.Launcher$ProcStarter.start(Launcher.java:506)
+	at hudson.tasks.CommandInterpreter.perform(CommandInterpreter.java:144)
+	at hudson.tasks.CommandInterpreter.perform(CommandInterpreter.java:92)
+	at hudson.tasks.BuildStepMonitor$1.perform(BuildStepMonitor.java:20)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.perform(AbstractBuild.java:818)
+	at hudson.model.Build$BuildExecution.build(Build.java:199)
+	at hudson.model.Build$BuildExecution.doRun(Build.java:164)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.run(AbstractBuild.java:526)
+	at hudson.model.Run.execute(Run.java:1894)
+	at hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:44)
+	at hudson.model.ResourceController.execute(ResourceController.java:101)
+	at hudson.model.Executor.run(Executor.java:446)
+Build step 'Execute Windows batch command' marked build as failure
+Finished: FAILURE

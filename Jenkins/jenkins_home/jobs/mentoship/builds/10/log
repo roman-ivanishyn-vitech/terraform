@@ -1,0 +1,24 @@
+Started by user [8mha:////4DfkloKUdoyV7bs0PAPeRR9aOgFcWWcGhcs8grzpItiLAAAAnB+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz+EgYB/dLi1CL9osyyxLzM4ozKPACMKN3xxQAAAA==[0mRoman Ivanishyn
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/mentoship
+The recommended git tool is: NONE
+using credential af246f53-f6d2-45bb-a446-9126e75f30c1
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/mentoship/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/roman-ivanishyn-vitech/mentorship # timeout=10
+Fetching upstream changes from https://github.com/roman-ivanishyn-vitech/mentorship
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5'
+using GIT_ASKPASS to set credentials mentorship
+ > git fetch --tags --force --progress -- https://github.com/roman-ivanishyn-vitech/mentorship +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 3ef22653525c37315c5d98cd6709b9e3f26071c7 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 3ef22653525c37315c5d98cd6709b9e3f26071c7 # timeout=10
+Commit message: "create domain name and set to the certificate."
+ > git rev-list --no-walk 3ef22653525c37315c5d98cd6709b9e3f26071c7 # timeout=10
+[mentoship] $ /bin/sh -xe /tmp/jenkins7512613602268241757.sh
++ pipeline {
+/tmp/jenkins7512613602268241757.sh: 2: pipeline: not found
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="mentorship-banner">
+    <h1>Welcome to the AWS & Terraform Mentorship Program</h1>
+    <p>
+      Learn how to master the cloud using AWS and infrastructure as code with Terraform.
+      Join our mentorship to unlock your potential and build scalable, secure infrastructure.
+    </p>
+  </div>
+
+  <div class="mentorship-form">
+    <h2>Enter Your Details to Start</h2>
+    <form (ngSubmit)="onSubmit()">
+      <input
+        type="text"
+        placeholder="Your Name"
+        [(ngModel)]="name"
+        name="name"
+        required />
+      <input
+        type="email"
+        placeholder="Your Email"
+        [(ngModel)]="email"
+        name="email"
+        required />
+      <textarea
+        placeholder="Your Goal for this Mentorship"
+        [(ngModel)]="goal"
+        name="goal"
+        required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>

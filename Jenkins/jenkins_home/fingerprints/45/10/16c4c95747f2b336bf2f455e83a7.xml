@@ -1,0 +1,13 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2024-10-17 21:49:17.100 UTC</timestamp>
+  <md5sum>451016c4c95747f2b336bf2f455e83a7</md5sum>
+  <fileName>Credential id=af246f53-f6d2-45bb-a446-9126e75f30c1 name=roman-ivanishyn-vitech/****** (mentorship)</fileName>
+  <usages>
+    <entry>
+      <string>mentoship</string>
+      <ranges>1-13</ranges>
+    </entry>
+  </usages>
+  <facets/>
+</fingerprint>
