@@ -13,15 +13,15 @@ pipeline {
             }
         }
         stage('Install Make') {
-                    steps {
-                        // Install make if it's not already installed
-                        sh '''
-                        if ! command -v make &> /dev/null; then
-                            apt-get update && apt-get install -y build-essential
-                        fi
-                        '''
-                    }
-                }
+            steps {
+                // Install make if it's not already installed
+                sh '''
+                if ! command -v make &> /dev/null; then
+                    sudo apt-get update && sudo apt-get install -y build-essential
+                fi
+                '''
+            }
+        }
         stage('Terraform Init') {
             steps {
                 sh 'make init'
