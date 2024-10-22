@@ -12,21 +12,13 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Terraform Init') {
-            steps {
-                sh 'make init'
-            }
-        }
-        stage('Terraform Plan') {
-            steps {
-                sh 'make plan'
-            }
-        }
-        stage('Terraform Apply') {
-            steps {
-                sh 'make apply'
-            }
-        }
+        stage('AWS & Terraform  ') {
+                    steps {
+                        sh 'terraform --version'
+                        sh 'aws --version'
+                    }
+                }
+
     }
 
     post {
