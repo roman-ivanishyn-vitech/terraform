@@ -1,3 +1,5 @@
+@Library('github.com/releaseworks/jenkinslib') _
+
 pipeline {
     agent any
     environment {
@@ -15,7 +17,11 @@ pipeline {
             }
         }
         stage('Terraform Init') {
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                AWS("--region=us-east-1 s3 ls")
+            }
             steps {
+                sh 'aws s3 ls'
                 sh 'export TF_VAR_access_key=$ACCESS_KEY'
                 sh 'export TF_VAR_secret_key=$SECRET_KEY'
                 sh 'make init'
