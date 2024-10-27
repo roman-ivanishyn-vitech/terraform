@@ -15,9 +15,9 @@ install:
 
 init: install
 	@echo "Initializing Terraform..."
-	@cd $(TERRAFORM_DIR) && $(TERRAFORM_BIN) init
+	@cd $(TERRAFORM_DIR) && $(TERRAFORM_BIN) init -var-file=terraform/vars/sandbox.tfvars
 
-plan: init
+plan:
 	@echo "Planning Terraform changes..."
 	@cd $(TERRAFORM_DIR) && $(TERRAFORM_BIN) plan -var-file=terraform/vars/sandbox.tfvars
 
