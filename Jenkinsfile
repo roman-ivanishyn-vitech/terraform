@@ -16,32 +16,40 @@ pipeline {
             }
         }
 
-        stage('List S3 Buckets') {
+        stage('List S3 buckets') {
             steps {
-                script {
-                    awsCommands {
-                        sh 'aws s3 ls --region us-east-1'
-                    }
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                    sh 'aws s3 ls --region us-east-1'
                 }
             }
         }
 
         stage('Terraform Init') {
             steps {
-                script {
-                    terraformCommands {
-                        sh 'make init'
-                    }
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                    sh '''
+                        export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+                        export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+                        export TF_VAR_access_key=$AWS_ACCESS_KEY_ID
+                        export TF_VAR_secret_key=$AWS_SECRET_ACCESS_KEY
+                        export TF_VAR_environment=sandbox
+                        make init
+                    '''
                 }
             }
         }
 
         stage('Terraform Plan') {
             steps {
-                script {
-                    terraformCommands {
-                        sh 'make plan'
-                    }
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                    sh '''
+                        export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+                        export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+                        export TF_VAR_access_key=$AWS_ACCESS_KEY_ID
+                        export TF_VAR_secret_key=$AWS_SECRET_ACCESS_KEY
+                        export TF_VAR_environment=sandbox
+                        make plan
+                    '''
                 }
             }
         }
@@ -51,26 +59,5 @@ pipeline {
         always {
             cleanWs()
         }
-    }
-}
-
-// Define the closure for AWS commands
-def awsCommands(Closure command) {
-    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-        command()
-    }
-}
-
-// Define the closure for Terraform commands
-def terraformCommands(Closure command) {
-    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-        sh '''
-            export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-            export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-            export TF_VAR_access_key=$AWS_ACCESS_KEY_ID
-            export TF_VAR_secret_key=$AWS_SECRET_ACCESS_KEY
-            export TF_VAR_environment=sandbox
-        '''
-        command()
     }
 }
