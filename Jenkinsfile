@@ -69,7 +69,7 @@ def terraformCommands(Closure command) {
             export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
             export TF_VAR_access_key=$AWS_ACCESS_KEY_ID
             export TF_VAR_secret_key=$AWS_SECRET_ACCESS_KEY
-            export TF_VAR_environment=your_environment  # Set your environment variable
+            export TF_VAR_environment=sandbox
         '''
         command()
     }
