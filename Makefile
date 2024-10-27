@@ -19,7 +19,7 @@ init: install
 
 plan:
 	@echo "Planning Terraform changes..."
-	@cd $(TERRAFORM_DIR) && $(TERRAFORM_BIN) plan -var-file=terraform/vars/sandbox.tfvars
+	@cd $(TERRAFORM_DIR) && $(TERRAFORM_BIN) plan
 
 apply: plan
 	@echo "Applying Terraform changes..."
